@@ -1,6 +1,7 @@
 <?php
 require "connection.php";
-//Session_start();
+Session_start();
+
 
 
 ?>

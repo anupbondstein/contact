@@ -60,7 +60,7 @@ table, th, td {
                              		<td><a href="update.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" >Edit</a>
                              			<td><a href="address.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" >Address List</a>
                              				<td><a href="phone.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" >Phone List</a>
-                                      <td><a href="#.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" >View Details</a>
+                                      <td><a href="details.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" >View Details</a>
                              		</td> 
 
                              	</tr>

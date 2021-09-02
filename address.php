@@ -1,6 +1,11 @@
 <?php
+session_start();
+
 require "connection.php";
+
 $uid=(int)$_GET['id'];
+$_SESSION["uid"] = $uid;
+
 
 $showAll_add="Select * from addres where user_id ='$uid' " ;
 
@@ -38,7 +43,7 @@ table, th, td {
     <th>Country</th>
     <th>State</th>
     <th>Zip/PO</th>
-    <th> <a href="address_new.php">Add new</a></th>
+    <th> <a href="new_ad.php">Add new</a></th>
     <th>Edit</th>
     
     <?php
@@ -59,8 +64,8 @@ table, th, td {
                             	
                              ?>
                             
-                             		<td><a href="del.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
-                             		<td><a href="upd.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" >Edit</a>
+                             		<td><a href="del_a.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+                             		<td><a href="upd_a.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" >Edit</a>
                              		</td> 
 
                              	</tr>

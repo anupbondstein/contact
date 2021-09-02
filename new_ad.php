@@ -1,24 +1,23 @@
-<?php 
+<?php
+session_start();
+//$uid=$_GET["id"];
+
+
 require "connection.php";
-include('function.php');
-
-$uid=(int)$_GET['id'];
+$uid=$_SESSION['uid'];
 //echo $uid;
-//echo gettype($uid)."\n";
+//print_r($uid);
 
-$qry = mysqli_query($link,"select * from phone where id='$uid'");
-$data= mysqli_fetch_array($qry);
 ?>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>Update</title>
-	<link href="CSS/style.css" rel="stylesheet" type="text/css" />
+<head><title>Add A New Phone</title>
+<link href="CSS/style.css" rel="stylesheet" type="text/css" />
 
 
 <style type="text/css">
@@ -175,62 +174,91 @@ button:active {
 
 
 </style>
+
 </head>
 <body>
-
-	<div class="page-container">
+<div class="page-container">
             
-            <form action="upd_p.php" method="post">
-			<h1>Edit </h1>
-			<h6>Home</h6>
-               <input type="text" name="home_n" class="Name" value="<?php echo $data['home_n'] ?>" placeholder="Home Phone" required="">
-               <h6>Office</h6>
-               <input type="text" name="office_n" class="Name" value="<?php echo $data['office_n'] ?>" placeholder="Office Phone" required="">
-               <h6>Landline</h6>
-               <input type="text" name="lan_n" class="Name" value="<?php echo $data['lan_n'] ?>" placeholder="Landline Phone" required="">
-               <h6>Personal</h6>
-               <input type="text" name="personal_n" class="Name" value="<?php echo $data['personal_n'] ?>" placeholder="prsonal Phone" required="">
+            <form action="new_ad.php" method="post">
+			<h1>Add Address</h1>
+               <select style="color: darkorchid; background: lightcyan; box-shadow: white;" name="oparators">
+        
+                        <option>Current</option>
+                        <option>Permanent</option>
+                        <option>Office</option>
+                        
+
+            </select>
               
-                <input type="hidden" name="id" class="number"value="<?php echo $uid ?>" required="">
+               <input type="text" name="street" class="Name"  placeholder="Street Name" required="">
+              
+               <input type="text" name="city" class="Name"  placeholder="City" required="">
+              
+               <input type="text" name="state" class="Name"  placeholder="State" >
 
-                
-                <button type="submit" value="update" name="update">Edit</button>
-            </form>
-           <?php
+               <input type="text" name="zip" class="Name"  placeholder="Zip/PO" required="">
 
-           	if (isset($_POST["update"])){
-                
-               // var_dump($_POST);
-           		$home_n=$_POST["home_n"];
-              $office_n=$_POST["office_n"];
-              $lan_n=$_POST["lan_n"];
-              $personal_n=$_POST["personal_n"];
-             
-
-             /*  echo $uid;
-               echo $f_name;
-               echo"<br>";
-               echo $l_name;
-               echo"<br>";
-               echo $email;
-               echo"<br>";*/
+               <input type="text" name="c_name" class="Name"  placeholder="Country" required="">
                
+               <input type="hidden" name="user_id" class="number"value="<?php echo $uid ?>" required="">
+				
+                <button type="submit" value="submit" name="submit">Add Address</button>
+            </form>
 
-              $id=$_POST["id"];
-            //echo $id."id is printed";
-             $sql= "UPDATE phone set home_n='$home_n',office_n='$office_n',lan_n='$lan_n',personal_n='$personal_n'where id= '$id' ";
-             $update_phone=mysqli_query($link,$sql);
+<?php
 
+            if (isset($_POST["submit"]))
+            {
+               // print_r($_POST['user_id']) ;
+               /* $userid=$_POST["user_id"];
+                $type=$_POST["number_type"];
+                $number=$_POST["number"];
+                echo $userid;
+                echo $type;
+                echo $number;*/
+
+                $add_type=$_POST["oparators"];
+                $street=$_POST["street"];
+                $city=$_POST["city"];
+                $state=$_POST["state"];
+                $zip=$_POST["zip"];
+                $c_name=$_POST["c_name"];
+                $userid=$_POST["user_id"];
+              //  echo $userid;
+              //  echo $c_name;
+
+
+
+                //echo $add_type;
+
+                $sql="INSERT into addres values ('','$userid','$street','$city','$state','$zip','$c_name','$add_type')";
+                $add=mysqli_query($link,$sql);
+               // $sql=mysqli_query($link,"INSERT into phone values ('','$_POST[user_id]','$_POST[home_n]','$_POST[office_n]','$_POST[lan_n]','$_POST[personal_n]')");
+               if ($add === TRUE) {
 
                     ?>
-                    <script type="text/javascript">
+                    <div class="alert alert-success col-lg-12 col-lg-push-0">
+                        Successfully Added, Thank you!!
 
-            window.location="index.php";
-        </script>   
-        <?php  
-           
-           }
-           ?>
 
+                </div>
+                <?php
+                } else {
+                    echo "<script>window.alert('Something went wrong!')</script>";
+                }
+            }
+?>
+
+</div>
+<div style="color: white" class="separator">
+                <p class="change_link">Move to User Details 
+                    <a style="color: red" href="index.php">Move</a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br/>
+
+
+            </div>
 </body>
 </html>

@@ -6,7 +6,7 @@ $uid=(int)$_GET['id'];
 //echo $uid;
 //echo gettype($uid)."\n";
 
-$qry = mysqli_query($link,"select * from phone where id='$uid'");
+$qry = mysqli_query($link,"select * from addres where id='$uid'");
 $data= mysqli_fetch_array($qry);
 ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -180,52 +180,55 @@ button:active {
 
 	<div class="page-container">
             
-            <form action="upd_p.php" method="post">
+            <form action="upd_a.php" method="post">
 			<h1>Edit </h1>
-			<h6>Home</h6>
-               <input type="text" name="home_n" class="Name" value="<?php echo $data['home_n'] ?>" placeholder="Home Phone" required="">
-               <h6>Office</h6>
-               <input type="text" name="office_n" class="Name" value="<?php echo $data['office_n'] ?>" placeholder="Office Phone" required="">
-               <h6>Landline</h6>
-               <input type="text" name="lan_n" class="Name" value="<?php echo $data['lan_n'] ?>" placeholder="Landline Phone" required="">
-               <h6>Personal</h6>
-               <input type="text" name="personal_n" class="Name" value="<?php echo $data['personal_n'] ?>" placeholder="prsonal Phone" required="">
-              
-                <input type="hidden" name="id" class="number"value="<?php echo $uid ?>" required="">
+			<select  style="color: darkorchid; background: lightcyan; box-shadow: white;" name="oparators">
+                        <option <?php if ($data['add_type'] == 'Current') echo ' selected="selected"'; ?>>Current</option>
+                        <option<?php if ($data['add_type'] == 'Permanent') echo ' selected="selected"'; ?>>Permanent</option>
+                        <option <?php if ($data['add_type'] == 'Office') echo ' selected="selected"'; ?>>Office</option>
+                        
 
+            </select>
+              
+               <input type="text" name="street" class="Name" value="<?php echo $data['street'] ?>"  placeholder="Street Name" required="">
+              
+               <input type="text" name="city" class="Name" value="<?php echo $data['city'] ?>"   placeholder="City" required="">
+              
+               <input type="text" name="state" class="Name" value="<?php echo $data['state'] ?>"  placeholder="State" >
+
+               <input type="text" name="zip" class="Name" value="<?php echo $data['zip'] ?>"  placeholder="Zip/PO" required="">
+
+               <input type="text" name="c_name" class="Name" value="<?php echo $data['c_name'] ?>"  placeholder="Country" required="">
+               
+               <input type="hidden" name="user_id" class="number"value="<?php echo $uid ?>" required="">
                 
-                <button type="submit" value="update" name="update">Edit</button>
+                <button type="submit" value="submit" name="submit">Edit Address</button>
             </form>
            <?php
 
-           	if (isset($_POST["update"])){
+           	if (isset($_POST["submit"])){
                 
-               // var_dump($_POST);
-           		$home_n=$_POST["home_n"];
-              $office_n=$_POST["office_n"];
-              $lan_n=$_POST["lan_n"];
-              $personal_n=$_POST["personal_n"];
-             
+              $add_type=$_POST["oparators"];
+                $street=$_POST["street"];
+                $city=$_POST["city"];
+                $state=$_POST["state"];
+                $zip=$_POST["zip"];
+                $c_name=$_POST["c_name"];
+                $userid=$_POST["user_id"];
 
-             /*  echo $uid;
-               echo $f_name;
-               echo"<br>";
-               echo $l_name;
-               echo"<br>";
-               echo $email;
-               echo"<br>";*/
-               
-
-              $id=$_POST["id"];
+               /* echo $userid;
+                echo $c_name;
+                echo $add_type;
+                //$id=$_POST["id"];*/
             //echo $id."id is printed";
-             $sql= "UPDATE phone set home_n='$home_n',office_n='$office_n',lan_n='$lan_n',personal_n='$personal_n'where id= '$id' ";
-             $update_phone=mysqli_query($link,$sql);
+             $sql= "UPDATE addres set street='$street',city='$city',state='$state',zip='$zip',c_name='$c_name',add_type='$add_type' where id= '$userid' ";
+             $update_address=mysqli_query($link,$sql);
 
 
                     ?>
                     <script type="text/javascript">
 
-            window.location="index.php";
+                  window.location="index.php";
         </script>   
         <?php  
            
