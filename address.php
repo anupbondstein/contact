@@ -82,6 +82,16 @@ table, th, td {
  
  ?>
     </table>
+    <div style="color: black;" class="separator">
+                <p class="change_link">Move to User Details 
+                    <a style="color: red" href="index.php">Move</a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br/>
+
+
+            </div>
 
 
 </body>

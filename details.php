@@ -52,7 +52,7 @@ $All_phone=mysqli_query($link,$sql2);
   							echo "ADDRESS:";echo"<br>";
 
   	
-                                echo "Address Of:"; echo $row["add_type"];echo "Address"; echo "<br>";
+                                echo "Address Of:"; echo $row["add_type"];echo " Address"; echo "<br>";
                                 
                                 echo "Street :"; echo $row["street"]; echo "<br>";
                                 echo "City :"; echo $row["city"]; echo "<br>";
@@ -69,7 +69,7 @@ $All_phone=mysqli_query($link,$sql2);
   							echo "Phone Details";echo"<br>";
 
   	
-                                echo "Home :"; echo $row["home_n"];echo "Address"; echo "<br>";
+                                echo "Home :"; echo $row["home_n"]; echo "<br>";
                                 
                                 echo "Office :"; echo $row["office_n"]; echo "<br>";
                                 echo "Landline :"; echo $row["lan_n"]; echo "<br>";
