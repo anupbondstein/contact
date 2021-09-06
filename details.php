@@ -26,8 +26,29 @@ $All_phone=mysqli_query($link,$sql2);
 <head>
 	<meta charset="utf-8">
 	<title>All Details</title>
+  <meta charset="UTF-8">
+    <title>View Record</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .wrapper{
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        .content {
+              max-width: 500px;
+              margin: auto;
+}
+    </style>
 </head>
-<body>
+<body >
+  <div class="mt-5 mb-3 clearfix" >
+                        <h5 style="text-align: center;">Full Contract </h5>
+
+  </div>
+  <div class="content">
+  
+
 	<?php
   while($row = mysqli_fetch_array($user_details))
 
@@ -35,11 +56,11 @@ $All_phone=mysqli_query($link,$sql2);
 
   	
   	
-                                echo "Frist Name :"; echo $row["f_name"]; echo "<br>";
+                                echo "Frist Name : "; echo "<b>". $row["f_name"]."</b>"; echo "<br>";
                                 
-                                echo "Last Name :"; echo $row["l_name"]; echo "<br>";
-                                echo "Email :"; echo $row["email"]; echo "<br>";
-                                echo " Date Of Birth :"; echo $row["date_of_b"]; echo "<br>";
+                                echo "Last Name : "; echo "<b>". $row["l_name"]."</b>"; echo "<br>";
+                                echo "Email : "; echo "<b>". $row["email"]."</b>"; echo "<br>";
+                                echo " Date Of Birth : "; echo "<b>". $row["date_of_b"]."</b>"; echo "<br>";
                                
 
   }
@@ -49,16 +70,16 @@ $All_phone=mysqli_query($link,$sql2);
 
   {
 
-  							echo "ADDRESS:";echo"<br>";
+  							echo "<h6> ADDRESS</h6>";echo"<br>";
 
   	
-                                echo "Address Of:"; echo $row["add_type"];echo " Address"; echo "<br>";
+                                echo " Address of : "; echo "<b>".$row["add_type"]."</b>";echo " <b> Address"."</b>"; echo "<br>";
                                 
-                                echo "Street :"; echo $row["street"]; echo "<br>";
-                                echo "City :"; echo $row["city"]; echo "<br>";
-                                echo "State :"; echo $row["state"]; echo "<br>";
-                                echo "Zip :"; echo $row["zip"]; echo "<br>";
-                                echo "Country :"; echo $row["c_name"]; echo "<br>";
+                                echo "Street : "; echo "<b>".$row["street"]."</b>"; echo "<br>";
+                                echo "City : "; echo "<b>".$row["city"]."</b>"; echo "<br>";
+                                echo "State : "; echo "<b>". $row["state"]."</b>"; echo "<br>";
+                                echo "Zip : "; echo  "<b>".$row["zip"]."</b>"; echo "<br>";
+                                echo "Country : "; echo "<b>".$row["c_name"]."</b>"; echo "<br>";
                                
 
   }
@@ -66,14 +87,14 @@ $All_phone=mysqli_query($link,$sql2);
 
   {
 
-  							echo "Phone Details";echo"<br>";
+  							echo "<h6> Phone Details </h6>";echo"<br>";
 
   	
-                                echo "Home :"; echo $row["home_n"]; echo "<br>";
+                                echo "Home : "; echo "<b>". $row["home_n"]."</b>"; echo "<br>";
                                 
-                                echo "Office :"; echo $row["office_n"]; echo "<br>";
-                                echo "Landline :"; echo $row["lan_n"]; echo "<br>";
-                                echo "Personal :"; echo $row["personal_n"]; echo "<br>";
+                                echo "Office : "; echo "<b>".$row["office_n"]."</b>"; echo "<br>";
+                                echo "Landline : "; echo "<b>".$row["lan_n"]."</b>"; echo "<br>";
+                                echo "Personal : "; echo "<b>".$row["personal_n"]."</b>"; echo "<br>";
                                 
                                
 
@@ -83,11 +104,9 @@ $All_phone=mysqli_query($link,$sql2);
 
  
  ?>
-
- </div>
-<div style="color: white" class="separator">
-                <p style="color: black;" class="change_link">Back to All User Info
-                    <a style="color: red" href="index.php">Move</a>
+ <div style="color: white" class="separator">
+                <p><a href="index.php" class="btn btn-primary">Back</a></p>
+               
                 </p>
 
                 <div class="clearfix"></div>
@@ -95,6 +114,9 @@ $All_phone=mysqli_query($link,$sql2);
 
 
             </div>
+
+ </div>
+
 
 </body>
 </html>

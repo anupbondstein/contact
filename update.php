@@ -224,6 +224,16 @@ button:active {
            
            }
            ?>
+           <div style="color: white" class="separator">
+                <p><a href="index.php" class="btn btn-primary">Back</a></p>
+               
+                </p>
+
+                <div class="clearfix"></div>
+                <br/>
+
+
+            </div>
 
 </body>
 </html>
